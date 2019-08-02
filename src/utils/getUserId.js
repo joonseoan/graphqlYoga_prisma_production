@@ -8,7 +8,7 @@ export default (request, requireAuth = true) => {
 
     if(header) {
         const token = header.replace('Bearer ', '');
-        const decode = jwt.verify(token, 'mysolution')
+        const decode = jwt.verify(token, process.env.PRISMA_JWT_SECRET)
         return decode.userId;
     }
 
